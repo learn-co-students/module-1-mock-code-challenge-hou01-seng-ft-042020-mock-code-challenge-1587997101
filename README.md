@@ -1,8 +1,8 @@
 # Object Relations Code Challenge - FlatAClass
 
-We have three models: `Student`, `Tutor`, and `Class`.
+We have three models: `Student`, `Tutor`, and `Course`.
 
-A `Student` has many `Class`es. A `Tutor` has many `Class`es. A `Class` belongs to a `Tutor` and belongs to a `Student`.
+A `Student` has many `Course`s. A `Tutor` has many `Course`s. A `Course` belongs to a `Tutor` and belongs to a `Student`.
 
 `Student` - `Tutor` is a many to many relationship.
 
@@ -62,35 +62,35 @@ Some of the methods listed are provided to you in the starter code. You should c
 - `Tutor.all`
   - returns an array of all the `Tutor` instances that have been initialized
 
-#### Class
+#### Course
 
-- `Class#initialize(tutor, student, course_name)`
-  - `Class` is initialized with a `Tutor` instance, a `Student` instance, and a course_name (string)
-- `Class#course_name`
-  - returns the course_name for the `Class` instance
-- `Class.all`
-  - returns an array of all initialized `Class` instances
+- `Course#initialize(tutor, student, course_name)`
+  - `Course` is initialized with a `Tutor` instance, a `Student` instance, and a course_name (string)
+- `Course#course_name`
+  - returns the course_name for the `Course` instance
+- `Course.all`
+  - returns an array of all initialized `Course` instances
 
 ### Object Relationship Methods
 
-#### Class
+#### Course
 
-- `Class#tutor`
-  - returns the `Tutor` instance associated with the `Class` instance
-- `Class#student`
-  - returns the `Student` instance associated with the `Class` instance
+- `Course#tutor`
+  - returns the `Tutor` instance associated with the `Course` instance
+- `Course#student`
+  - returns the `Student` instance associated with the `Course` instance
 
 #### Tutor
 
-- `Tutor#classes`
-  - returns an array of `Class` instances associated with the `Tutor` instance.
+- `Tutor#courses`
+  - returns an array of `Course` instances associated with the `Tutor` instance.
 - `Tutor#students`
   - returns an array of `Student` instances tutored by the `Tutor` instance.
 
 #### Student
 
-- `Student#classes`
-  - returns an array of all the `Class` instances for the `Student`.
+- `Student#courses`
+  - returns an array of all the `Course` instances for the `Student`.
 - `Student#tutors`
   - returns an array of all of the `Tutor` instances that are tutoring the `Student`.
 
@@ -100,12 +100,12 @@ Some of the methods listed are provided to you in the starter code. You should c
 
 - `Tutor#tutored_student?(student)`
   - a `Student` instance is the only argument
-  - returns `true` if the `Tutor` has tutored this `Student` (if there is a `Class` instance that has this `Tutor` and `Student`), returns `false` otherwise
+  - returns `true` if the `Tutor` has tutored this `Student` (if there is a `Course` instance that has this `Tutor` and `Student`), returns `false` otherwise
 
 #### Student
 
 - `Student#enrolled_fulltime?`
-   - returns `true` if the `Student` has enrolled for at least 3 classes, returns `false` otherwise
+   - returns `true` if the `Student` has enrolled for at least 3 Courses, returns `false` otherwise
 
 ## Rubric
 

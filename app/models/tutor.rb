@@ -20,6 +20,6 @@ class Tutor
     end
 
     def tutored_student?(student)
-        students.include?(students.name == student)
+        students.include?(student)
     end
 end

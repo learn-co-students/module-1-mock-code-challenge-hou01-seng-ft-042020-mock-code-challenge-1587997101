@@ -1,76 +1,136 @@
-# Mini Mock Code Challenge
+# Object Relations Code Challenge - FlatAClass
 
-The topics covered in each module build upon the topics covered in the last.  For example, in Module 2 you will learn about the Ruby on Rails framework. To build an application in Rails one should have a solid foundation in Ruby.  In Module 3, covering JavaScript, you will continue to use Rails as a backend and build upon the foundations of how web applications work covered in Module 2. Learning React in Module 4 will require understanding of both functional and object oriented JavaScript.
+We have three models: `Student`, `Tutor`, and `Class`.
 
-But we're getting ahead of ourselves...
+A `Student` has many `Class`es. A `Tutor` has many `Class`es. A `Class` belongs to a `Tutor` and belongs to a `Student`.
 
-We understand that the idea of the Code Challenges can be **stressful**. We're not trying to unduly stress you out, we swear. So what's the point?
+`Student` - `Tutor` is a many to many relationship.
 
-## What's the point?
-
-Flatiron did not always have this structure of modules and code challenges.  One problem of that previous structure was that because of the way the course builds upon the previous material, if a student ever got behind during a particular week, as the class continued on to the next week and then the next, it became impossible for a student to catch up.  In the end, some students had to essentially re-do large sections of the curriculum after the course was over with more limited instructor support and without the daily classroom structure.  This is much more difficult  and ultimately takes many more weeks than if there was the opportunity for a student to pause, focus on the current material and shore up any misundersrandings, and then proceed.
-
-The utility of the challenges is that they provide a built-in moment to review the major topics covered in the current unit.   When the code from a challenge is being looked at by instructors, they are looking for indicators of understanding of the main principles taught in the module. The guiding idea is:
-
-- **Will this student be successful moving forward into the next module?**
-
-The point of a code challenge is **NOT** to:
-
-- Stump students with a trick question
-- 'Grade' the results in the sense of '-3 points here, which means this student has received an 82%'
-- Penalize for every small mistake.  Having functioning code will make your job significantly easier as you complete the challenge because you will be able to _run and test your work_. Having said that, if there is one feature that you couldn't get working and it is apparent from your work that you were attempting to do the right thing but made a small syntax error somewhere, the instructors may still be able to determine that you demonstrated your understanding of the material.
-
-## Mock Challenge
-
-_Do not expect every module to have a mock version of the code challenge. We are providing an example for the first module only as a way to familiarize you with the feel and structure of our code challenges. We want to remove some of the stress leading up to the first code challenge so that the results can be more indicative of what you have learned and less about how you may handle 'exam stress'.  Generally, we are careful not to 'teach to the test' and while we will be able to indicate what are the main areas to focus on we will not provide an example version of the code challenge_
-
-The information below is what you might expect to see when taking a new code challenge. One point of note is that the code challenges _will not have tests_.  This is intentional. It is really important to practice writing and running code outside of the framework of the labs and tests. 
+**Note**: You should draw your domain on paper or on a whiteboard _before you start coding_. Remember to identify a single source of truth for your data.
 
 ## Topics
 
 - Classes and Instances
+- Class and Instance Methods
+- Variable Scope
 - Object Relationships
-- Single Source of Truth
-- Array methods
-- Class methods
+- Arrays and Array Methods
 
-## Notes
+## Instructions
 
-You will be building out an application that can track Authors and Books.Your goal is to build out all of the methods listed below in the deliverables. Do your best to follow Ruby best practices. For example, use higher-level array methods such as map, select, and find when appropriate in place of each. Be sure to consider whether your implementation reflects the principle of Single Source of Truth. Use joiner class as needed.
+To get started, run `bundle install` while inside of this directory.
 
-We've provided you with a console that you can use to test your code. To enter a console session, run `ruby console.rb`. You'll be able to test out the methods that you write here.
+Build out all of the methods listed in the deliverables. The methods are listed in a suggested order, but you can feel free to tackle the ones you think are easiest. Be careful: some of the later methods rely on earlier ones.
+
+**Remember!** This code challenge does not have tests. You cannot run `rspec` and you cannot run `learn`. You'll need to create your own sample instances so that you can try out your code on your own. Make sure your associations and methods work in the console before submitting.
+
+We've provided you with a tool that you can use to test your code. To use it, run `ruby tools/console.rb` from the command line. This will start a `pry` session with your classes defined. You can test out the methods that you write here. You can add code to the `tools/console.rb` file to define variables and create sample instances of your objects.
+
+Writing error-free code is more important than completing all of the deliverables listed - prioritize writing methods that work over writing more methods that don't work. You should test your code in the console as you write.
+
+Similarly, messy code that works is better than clean code that doesn't. First, prioritize getting things working. Then, if there is time at the end, refactor your code to adhere to best practices. Examples of best practices might be to use higher-level array methods such as `map`, `select`, and `find` when appropriate in place of `each`, or, when you encounter duplicated logic, to extract it into a shared helper method.
+
+**Before you submit!** Save and run your code to verify that it works as you expect. If you have any methods that are not working yet, feel free to leave comments describing your progress.
 
 ## Deliverables
 
-### `Book`
-Build the following methods on the Book class
+Write the following methods in the classes in the files provided. Feel free to build out any helper methods if needed.
 
-- `Book.all`
-should return all of the books
-- `Book#author`
-should return the author instance who wrote this book
-- `Book#title`
-should return the title of the book
-- `Book#word_count`
-should return the number of words in the book
+Deliverables use the notation `#` for instance methods, and `.` for class methods.
 
-### `Author`
-Build the following methods on the Author class
+Some of the methods listed are provided to you in the starter code. You should check that they work correctly, and that you understand them.
 
-- `Author.all`
-should return all of the authors
-- `Author#books`
-should return all of the books an author has written
-- `Author#write_book`
-should take arguments of a title and word count and make a new Book instance associated with this author
-- `Author#total_words`
-should return the total number of words that author has written across all of their authored books.
-- `Author.most_words`
-should return the author instance who has written the most words
+### Initializers, Readers, and Writers
 
-### `BookAuthor`
-Build the following methods on the BookAuthor class
+#### Student
 
-- `BookAuthor.all`
-should return all of the instance for BookAuthor class
+- `Student#initialize(name)`
+  - `Student` is initialized with a name (string)
+  - name **can be** changed after the `Student` is initialized
+- `Student#name`
+  - returns the `Student`'s name
+- `Student.all`
+  - returns an array of all the `Student` instances that have been initialized
+
+#### Tutor
+
+- `Tutor#initialize(name)`
+  - `Tutor` is initialized with a name (string)
+  - name **can be** changed after the Tutor is initialized
+- `Tutor#name`
+  - returns the Tutor's name
+- `Tutor.all`
+  - returns an array of all the `Tutor` instances that have been initialized
+
+#### Class
+
+- `Class#initialize(tutor, student, course_name)`
+  - `Class` is initialized with a `Tutor` instance, a `Student` instance, and a course_name (string)
+- `Class#course_name`
+  - returns the course_name for the `Class` instance
+- `Class.all`
+  - returns an array of all initialized `Class` instances
+
+### Object Relationship Methods
+
+#### Class
+
+- `Class#tutor`
+  - returns the `Tutor` instance associated with the `Class` instance
+- `Class#student`
+  - returns the `Student` instance associated with the `Class` instance
+
+#### Tutor
+
+- `Tutor#classes`
+  - returns an array of `Class` instances associated with the `Tutor` instance.
+- `Tutor#students`
+  - returns an array of `Student` instances tutored by the `Tutor` instance.
+
+#### Student
+
+- `Student#classes`
+  - returns an array of all the `Class` instances for the `Student`.
+- `Student#tutors`
+  - returns an array of all of the `Tutor` instances that are tutoring the `Student`.
+
+### Aggregate and Association Methods
+
+#### Tutor
+
+- `Tutor#tutored_student?(student)`
+  - a `Student` instance is the only argument
+  - returns `true` if the `Tutor` has tutored this `Student` (if there is a `Class` instance that has this `Tutor` and `Student`), returns `false` otherwise
+
+#### Student
+
+- `Student#enrolled_fulltime?`
+   - returns `true` if the `Student` has enrolled for at least 3 classes, returns `false` otherwise
+
+## Rubric
+
+### Build classes using OO Ruby Syntax
+
+1. Class code has a syntax or runtime error. Code does not run at all, or exits with an error, or most Object-oriented deliverables are not implemented.
+2. No syntax errors. Some deliverables function correctly. Mixes up syntax for class and instance methods, refers to variables in the wrong scope, or uses `self` incorrectly, leading to logical errors. Method and variable names do not correspond to their respective behavior or data types. Methods might be duplicated, or code includes unused methods without a clear purpose.
+3. Correct class syntax for the deliverables submitted. May be incomplete or missing deliverables. Most code generally expresses intent: method and variable names match their behaviors and data types. Methods are not duplicated. Code does not have unused or methods without a clear purpose.
+4. Correct class syntax for all of the submitted code. Code express intent: method and variable names indicate their behavior and data types. Some deliverables might not be complete. No methods are duplicated.
+5. Correct class syntax for all deliverables, all deliverables complete. Code expresses intent: method and variable names indicate their behavior and data types, with the correct pluralization. No methods are duplicated. All methods have a clear purpose. Shared functionality is factored out into helper methods. Appropriate use of attr\_\* macros.
+
+### Model relationships using Ruby
+
+1. Submitted code does not relate models to each other through methods or data.
+2. Models relate to each other, but incompletely. Relationship methods are missing or have logic errors, store data on the wrong model, or are missing a single source of truth.
+3. Models relate to each other as specified in the instructions. Data is stored on the correct models, relationship methods are defined on the right models, and the logic correctly implements the relationships. Aggregate methods using the relationships may be incomplete or have errors.
+4. Models relate to each other as specified in the instructions. Aggregate methods work, but might not use helper methods effectively.
+5. Models relate to each other as specified in the instructions. Aggregate methods use helper methods effectively.
+
+### Solve problems with collections of data
+
+1. Does not attempt to solve collections problems, or has syntax errors in collection code.
+2. Collections methods have runtime or logic errors. Collections methods may use the wrong iterators, have incorrect logic, or many of the collections methods are unimplemented.
+3. Some collections methods work correctly, though several might be unimplemented. Code may not use the appropriate built in method for each problem, or duplicate logic instead of using helper methods.
+4. All collections methods are implemented and function correctly. Most use appropriate higher-level built-in methods. Methods may duplicate logic instead of using helper methods.
+5. All collections methods implemented and function correctly, using appropriate higher-level built-in methods. Shared logic is factored out to helper methods.
+
 

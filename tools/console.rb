@@ -1,5 +1,8 @@
 # require and load the environment file
+require 'pry'
+require "require_all"
 require_relative '../config/environment.rb'
+
 
 # call this method to reload your models as you write code
 def reload
